@@ -28,8 +28,12 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
-    #Imports and initializes database
+    # Imports and initializes database
     from . import db
     db.init_app(app)
+
+    # Imports the auth file
+    from . import auth
+    app.register_blueprint(auth.bp)
 
     return app
