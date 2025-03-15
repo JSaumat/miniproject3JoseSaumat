@@ -5,7 +5,9 @@ DROP TABLE IF EXISTS post;
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  firstname TEXT NOT NULL,
+  lastname TEXT NOT NULL
 );
 
 -- Creates a table for the posts on the forums
