@@ -3,8 +3,11 @@
 <title>{% block title %}{% endblock %} - Flaskr</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
-  <h1>Flaskr</h1>
+  <h1>Sam's Movie Blog</h1>
   <ul>
+    <li><a href="{{ url_for('home.home') }}">Home</a></li>
+    <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+
     {% if g.user %}
       <li><span>{{ g.user['firstname'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>

@@ -132,3 +132,37 @@ input[type=submit] {
   align-self: start;
   min-width: 10em;
 }
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.movie-tile {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.movie-tile:hover {
+  transform: scale(1.05);
+}
+
+.movie-tile img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+}
+
+.movie-tile p {
+  padding: 10px;
+  font-weight: bold;
+}

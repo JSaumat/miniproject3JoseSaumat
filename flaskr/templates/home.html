@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Welcome to Sam's Movie Blog</h1>
+{% endblock %}
+
+{% block content %}
+  <p>This is the home page where you can explore posts.</p>
+  <p><a href="{{ url_for('blog.index') }}">View Blog Posts</a></p>
+  <p><a href="{{ url_for('auth.login') }}">Log in to Post</a></p>
+
+  <h2>Sam's Top 10 Favorite Movies</h2>
+
+  <div class="movie-grid">
+    {% set movies = [
+      ('The Crow', 'https://www.youtube.com/watch?v=MTJ2s2eNwZQ', 'https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Crow_ver2.jpg/220px-Crow_ver2.jpg'),
+      ('Terminator 2: Judgment Day', 'https://www.youtube.com/watch?v=CRRlbK5w8AE', 'https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Terminator2poster.jpg/220px-Terminator2poster.jpg'),
+      ('Nightmare on Elm Street', 'https://www.youtube.com/watch?v=dCVh4lBfW-c', 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/A_Nightmare_on_Elm_Street_%281984%29_theatrical_poster.jpg/220px-A_Nightmare_on_Elm_Street_%281984%29_theatrical_poster.jpg'),
+      ('The Matrix', 'https://www.youtube.com/watch?v=vKQi3bBA1y8', 'https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg'),
+      ('The Lion King', 'https://www.youtube.com/watch?v=7TavVZMewpY', 'https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg'),
+      ('The Dark Knight', 'https://www.youtube.com/watch?v=EXeTwQWrcwY', 'https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg'),
+      ('The Nightmare Before Christmas', 'https://www.youtube.com/watch?v=wr6N_hZyBCk', 'https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/The_Nightmare_Before_Christmas_poster.jpg/220px-The_Nightmare_Before_Christmas_poster.jpg'),
+      ('Ghostbusters', 'https://www.youtube.com/watch?v=6hDkhw5Wkas', 'https://upload.wikimedia.org/wikipedia/en/2/2f/Ghostbusters_%281984%29_theatrical_poster.png'),
+      ('Back to the Future', 'https://www.youtube.com/watch?v=qvsgGtivCgs', 'https://upload.wikimedia.org/wikipedia/en/d/d2/Back_to_the_Future.jpg'),
+      ('Demolition Man', 'https://www.youtube.com/watch?v=0B5v6QZ5R3g', 'https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Demolition_man.jpg/220px-Demolition_man.jpg')
+    ] %}
+
+    {% for title, link, image in movies %}
+      <a href="{{ link }}" target="_blank" class="movie-tile">
+        <img src="{{ image }}" alt="{{ title }}">
+        <p>{{ title }}</p>
+      </a>
+    {% endfor %}
+  </div>
+
+{% endblock %}
