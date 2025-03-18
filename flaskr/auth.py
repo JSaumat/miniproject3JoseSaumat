@@ -29,6 +29,14 @@ def register():
             error = 'First name is required.'
         elif not lastname:
             error = 'Last name is required.'
+        else:
+            # Check if username already exists
+            existing_user = db.execute(
+                'SELECT id FROM user WHERE username = ?', (username,)
+            ).fetchone()
+
+            if existing_user:
+                error = 'Username is already taken. Please choose a different one.'
 
         if error is None:
             try:
@@ -37,14 +45,17 @@ def register():
                     (username, generate_password_hash(password), firstname, lastname)
                 )
                 db.commit()
+                flash('Registration successful! Please log in.', 'success')  # ✅ Success Message
+                print("Flashed message: Registration successful!")  # Debugging
+                return redirect(url_for("auth.login"))
             except db.IntegrityError:
                 error = f"User {username} is already registered."
-            else:
-                return redirect(url_for("auth.login"))
 
-        flash(error)
-
+        if error is not None:
+            flash(error, 'error')  # ✅ Ensure the error message is shown
+            print(f"Flashed error message: {error}")  # Debugging
     return render_template('auth/register.html')
+
 
 # Log In view for the website, checks username and password entered against the database
 @bp.route('/login', methods=('GET', 'POST'))

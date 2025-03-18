@@ -26,11 +26,11 @@ def get_movie_poster(movie_title, release_year=None):
 @bp.route("/")
 def home():
     movies = [
-        ("The Crow", "https://www.youtube.com/watch?v=MTJ2s2eNwZQ", 1994),
+        ("The Crow", "https://www.youtube.com/watch?v=otxeOvpc3Rw", 1994),
         ("Terminator 2: Judgment Day", "https://www.youtube.com/watch?v=CRRlbK5w8AE", 1991),
         ("Nightmare on Elm Street", "https://www.youtube.com/watch?v=dCVh4lBfW-c", 1984),
         ("The Matrix", "https://www.youtube.com/watch?v=vKQi3bBA1y8", 1999),
-        ("The Lion King", "https://www.youtube.com/watch?v=7TavVZMewpY", 1994),
+        ("The Lion King", "https://www.youtube.com/watch?v=eHcZlPpNt0Q", 1994),
         ("The Dark Knight", "https://www.youtube.com/watch?v=EXeTwQWrcwY", 2008),
         ("The Nightmare Before Christmas", "https://www.youtube.com/watch?v=wr6N_hZyBCk", 1993),
         ("Ghostbusters", "https://www.youtube.com/watch?v=6hDkhw5Wkas", 1984),

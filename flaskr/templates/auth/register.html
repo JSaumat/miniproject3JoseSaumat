@@ -4,6 +4,14 @@
   <h1>{% block title %}Register{% endblock %}</h1>
 {% endblock %}
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
 {% block content %}
   <form method="post" class="auth-form">
     <label for="firstname">First Name</label>
