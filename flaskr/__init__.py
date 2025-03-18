@@ -36,10 +36,15 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
+    # Imports the home page
     from . import home
     app.register_blueprint(home.bp)
 
-    #Imports the blog
+    # Imports the about page
+    from . import about
+    app.register_blueprint(about.bp)
+
+    # Imports the blog
     from . import blog
     app.register_blueprint(blog.bp)
     app.add_url_rule('/', endpoint='index')

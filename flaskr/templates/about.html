@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+  <h1>About Me</h1>
+  <p>Welcome to my movie blog! My name is Sam, and I'm a passionate movie enthusiast.</p>
+  <p>I've created this website to share my favorite movies, reviews, and discussions about classic films.</p>
+  <p>Check out my <a href="{{ url_for('blog.index') }}">blog</a> for more movie-related content!</p>
+
+  <!-- TMDb Credit Section -->
+  <div class="tmdb-credit">
+    <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+    <a href="https://www.themoviedb.org/" target="_blank">
+      <img src="{{ url_for('static', filename='images/tmdb_logo.svg') }}" alt="TMDb Logo" class="tmdb-logo">
+    </a>
+  </div>
+{% endblock %}
+
+

@@ -277,3 +277,17 @@ body.auth-page .auth-form button {
 body.auth-page .auth-form button:hover {
     background: #1b5e20;
 }
+
+/* TMDb Credit Section */
+.tmdb-credit {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #555;
+}
+
+.tmdb-credit img {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin-top: 10px;
+}
