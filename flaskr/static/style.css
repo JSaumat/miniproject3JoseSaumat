@@ -135,10 +135,12 @@ input[type=submit] {
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 20px;
   padding: 20px;
   justify-content: center;
+  align-items: center;
 }
 
 .movie-tile {
@@ -165,4 +167,113 @@ input[type=submit] {
 .movie-tile p {
   padding: 10px;
   font-weight: bold;
+}
+
+/* Age Verification Modal */
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.modal-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    margin: 5px;
+}
+
+/* Confirm Button */
+#confirmAgeButton {
+    background: #2e7d32; /* Green */
+    color: white;
+}
+
+#confirmAgeButton:hover {
+    background: #1b5e20;
+}
+
+/* Deny Button */
+#denyAgeButton {
+    background: #d32f2f; /* Red */
+    color: white;
+}
+
+#denyAgeButton:hover {
+    background: #b71c1c;
+}
+
+/* Apply styles ONLY to login and register pages */
+body.auth-page .auth-form {
+    display: flex;
+    flex-direction: column; /* Stack fields vertically */
+    width: 100%;
+    max-width: 350px; /* Keep form compact */
+    margin: 20px auto; /* Center the form */
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure labels are spaced correctly */
+body.auth-page .auth-form label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Ensure input fields stack properly */
+body.auth-page .auth-form input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Ensure submit button is properly aligned */
+body.auth-page .auth-form button {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 16px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+body.auth-page .auth-form button:hover {
+    background: #1b5e20;
 }

@@ -1,28 +1,46 @@
-<!--Base page-->
-<!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>Sam's Movie Blog</h1>
-  <ul>
-    <li><a href="{{ url_for('home.home') }}">Home</a></li>
-    <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam's Movie Blog</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
 
-    {% if g.user %}
-      <li><span>{{ g.user['firstname'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
-  </ul>
-</nav>
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+<!-- Dynamically add "auth-page" class only for login and register pages -->
+<body class="{% if request.endpoint == 'auth.login' or request.endpoint == 'auth.register' %}auth-page{% endif %}">
+
+    <nav>
+        <h1>Sam's Movie Blog</h1>
+        <ul>
+            <li><a href="{{ url_for('home.home') }}">Home</a></li>
+            <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+
+            {% if g.user %}
+                <li><span>Welcome, {{ g.user['firstname'] }}!</span></li>
+                <li><a href="{{ url_for('blog.create') }}">New Post</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+            {% else %}
+                <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Age Verification Modal (Hidden by Default) -->
+    <div id="ageModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Age Verification</h2>
+            <p>This site contains trailers and discussions for R-rated movies. You must be 18 or older to proceed.</p>
+            <button id="confirmAgeButton">I am 18 or older</button>
+            <button id="denyAgeButton">I am not 18</button>
+        </div>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
