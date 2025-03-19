@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
+{% block title %}Sam's Movie Blog : Log In{% endblock %}  <!-- Page-Specific Title -->
 
 {% block content %}
+  <h2>Log In</h2>  <!-- Added H2 Header -->
   <form method="post" class="auth-form">
     <label for="username">Username</label>
     <input type="text" name="username" id="username" required>

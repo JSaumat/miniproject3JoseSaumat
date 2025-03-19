@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}About Me{% endblock %}
+{% block title %}Sam's Movie Blog : About{% endblock %}  <!-- Page-Specific Title -->
 
 {% block content %}
-  <h1>About Me</h1>
-  <p>Welcome to my movie blog! My name is Sam, and I'm a passionate movie enthusiast.</p>
-  <p>I've created this website to share my favorite movies, reviews, and discussions about classic films.</p>
-  <p>Check out my <a href="{{ url_for('blog.index') }}">blog</a> for more movie-related content!</p>
+  <div class="center-title-about">
+    <h2>About This Site</h2>
+  </div>
+  <p>Welcome to my movie blog! My name is Sam, and these are my top 10 favorite movies. I've created this website to share my favorite</p>
+  <p>movies, and provide a place where we can discuss the list and share opinions on these movies and others not on the list.</p>
+  <p>Check out my <a href="{{ url_for('blog.index') }}">blog</a> to discuss the list or to make suggestions about other movies!</p>
 
   <!-- TMDb Credit Section -->
   <div class="tmdb-credit">

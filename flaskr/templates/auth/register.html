@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Register{% endblock %}</h1>
-{% endblock %}
+{% block title %}Sam's Movie Blog : Register{% endblock %}  <!-- Page-Specific Title -->
 
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -13,6 +11,7 @@
 {% endwith %}
 
 {% block content %}
+  <h2>Register</h2>  <!-- Added H2 Header -->
   <form method="post" class="auth-form">
     <label for="firstname">First Name</label>
     <input type="text" name="firstname" id="firstname" required>

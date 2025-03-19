@@ -1,20 +1,33 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
-{% endblock %}
+{% block title %}Sam's Movie Blog: Edit Post{% endblock %}
 
 {% block content %}
-  <form method="post">
+  <h1>Edit Post</h1>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          {% for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+  {% endwith %}
+
+  <!-- Edit Post Form (Now Vertical) -->
+  <form method="post" class="auth-form">
     <label for="title">Title</label>
-    <input name="title" id="title"
-      value="{{ request.form['title'] or post['title'] }}" required>
+    <input type="text" name="title" id="title" value="{{ post['title'] }}" required>
+
     <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
-    <input type="submit" value="Save">
+    <textarea name="body" id="body" required>{{ post['body'] }}</textarea>
+
+    <button type="submit">Save Changes</button>
   </form>
-  <hr>
-  <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
-    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+
+  <!-- Delete Post Form -->
+  <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post" class="auth-form">
+    <button type="submit" class="delete-button">Delete Post</button>
   </form>
+
 {% endblock %}
