@@ -70,7 +70,7 @@ Inspiration, code snippets, etc.
 
 API and Package documentation
 * [TMDB API](https://www.themoviedb.org/)
-* [Flask](https://documenter.getpostman.com/view/4016432/the-dog-api/RW81vZ4Z#26bd3f92-dd58-4569-bc13-22fa76396fe8)
+* [Flask](https://flask.palletsprojects.com/en/stable/)
 * [Jinja](https://jinja.palletsprojects.com/en/stable/)
 * [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 * [W3 Schools HTML](https://www.w3schools.com/html/default.asp)
