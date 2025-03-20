@@ -19,9 +19,9 @@
             <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
 
             {% if g.user %}
-                <li><span>Welcome, {{ g.user['firstname'] }}!</span></li>
                 <li><a href="{{ url_for('blog.create') }}">New Post</a></li>
                 <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                <li><span>Welcome, {{ g.user['firstname'] }}!</span></li>
             {% else %}
                 <li><a href="{{ url_for('auth.register') }}">Register</a></li>
                 <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
