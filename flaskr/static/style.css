@@ -426,3 +426,33 @@ h2 {
     margin-bottom: 15px;
     text-align: center;
 }
+
+/* Logged Out Page Styling */
+.logged-out-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.logged-out-container h1 {
+    color: #d32f2f; /* Red logout message */
+}
+
+.logged-out-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.home-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #377ba8; /* Blue button */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.home-link:hover {
+    background-color: #2b5e8a;
+}

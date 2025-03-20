@@ -95,11 +95,11 @@ def load_logged_in_user():
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
 
-# Log Out view that removes the logged in cookie and gives the user the default view of the site once again
-@bp.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('index'))
+# Original Log Out view that removes the logged in cookie and gives the user the default view of the site once again
+# @bp.route('/logout')
+# def logout():
+#     session.clear()
+#     return redirect(url_for('index'))
 
 # Checks to make sure user is logged in and only allows the user to change their posts
 def login_required(view):
@@ -111,3 +111,9 @@ def login_required(view):
         return view(**kwargs)
 
     return wrapped_view
+
+# New Logged Out view that lets the user know they have been logged out
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return render_template('auth/logged_out.html')  # Redirect to the Logged Out Page
