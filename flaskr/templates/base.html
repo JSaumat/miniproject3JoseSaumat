@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sam's Movie Blog{% endblock %}</title>  <!-- Dynamic Page Titles -->
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
@@ -11,47 +15,53 @@
 <!-- Dynamically add "auth-page" class only for login and register pages -->
 <body class="{% if request.endpoint == 'auth.login' or request.endpoint == 'auth.register' %}auth-page{% endif %}">
 
-    <nav>
-        <h1>Sam's Movie Blog</h1>
-        <ul>
-            <li><a href="{{ url_for('home.home') }}">Home</a></li>
-            <li><a href="{{ url_for('about.about') }}">About</a></li>
-            <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home.home') }}">Sam's Movie Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home.home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('about.about') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('blog.index') }}">Blog</a></li>
 
-            {% if g.user %}
-                <li><a href="{{ url_for('blog.create') }}">New Post</a></li>
-                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-                <li><span>Welcome, {{ g.user['firstname'] }}!</span></li>
-            {% else %}
-                <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
-            {% endif %}
-        </ul>
+                    {% if g.user %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('blog.create') }}">New Post</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                        <li class="nav-item navbar-text">Welcome, {{ g.user['firstname'] }}!</li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register') }}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <!-- Flash Messages Block -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-container">
-                {% for category, message in messages %}
-                    <div class="flash {{ category }}">{{ message }}</div>
-                {% endfor %}
+    <!-- Bootstrap Age Verification Modal -->
+    <div class="modal fade" id="ageModal" tabindex="-1" aria-labelledby="ageModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ageModalLabel">Age Verification</h5>
+                </div>
+                <div class="modal-body">
+                    <p>This site contains trailers and discussions for R-rated movies. You must be 18 or older to proceed.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="confirmAgeButton">I am 18 or older</button>
+                    <button type="button" class="btn btn-danger" id="denyAgeButton">I am not 18</button>
+                </div>
             </div>
-        {% endif %}
-    {% endwith %}
-
-    <!-- Age Verification Modal (Hidden by Default) -->
-    <div id="ageModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <h2>Age Verification</h2>
-            <p>This site contains trailers and discussions for R-rated movies. You must be 18 or older to proceed.</p>
-            <button id="confirmAgeButton">I am 18 or older</button>
-            <button id="denyAgeButton">I am not 18</button>
         </div>
     </div>
 
     {% block content %}{% endblock %}
 
+    <!-- Bootstrap 5.3.3 JavaScript (Required for Modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>

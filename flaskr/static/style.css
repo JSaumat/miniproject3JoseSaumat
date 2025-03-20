@@ -169,68 +169,68 @@ input[type=submit] {
   font-weight: bold;
 }
 
-/* Age Verification Modal */
-/* Modal Styling */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/*!* Age Verification Modal *!*/
+/*!* Modal Styling *!*/
+/*.modal {*/
+/*    display: none; !* Hidden by default *!*/
+/*    position: fixed;*/
+/*    z-index: 1000;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-color: rgba(0, 0, 0, 0.8);*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
 
-.modal-content {
-    background: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
+/*.modal-content {*/
+/*    background: white;*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);*/
+/*}*/
 
-.modal-content h2 {
-    margin-bottom: 10px;
-}
+/*.modal-content h2 {*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-.modal-content p {
-    margin-bottom: 20px;
-}
+/*.modal-content p {*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-/* Buttons */
-.modal-content button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-    margin: 5px;
-}
+/*!* Buttons *!*/
+/*.modal-content button {*/
+/*    padding: 10px 20px;*/
+/*    font-size: 16px;*/
+/*    cursor: pointer;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    transition: background 0.3s ease;*/
+/*    margin: 5px;*/
+/*}*/
 
-/* Confirm Button */
-#confirmAgeButton {
-    background: #2e7d32; /* Green */
-    color: white;
-}
+/*!* Confirm Button *!*/
+/*#confirmAgeButton {*/
+/*    background: #2e7d32; !* Green *!*/
+/*    color: white;*/
+/*}*/
 
-#confirmAgeButton:hover {
-    background: #1b5e20;
-}
+/*#confirmAgeButton:hover {*/
+/*    background: #1b5e20;*/
+/*}*/
 
-/* Deny Button */
-#denyAgeButton {
-    background: #d32f2f; /* Red */
-    color: white;
-}
+/*!* Deny Button *!*/
+/*#denyAgeButton {*/
+/*    background: #d32f2f; !* Red *!*/
+/*    color: white;*/
+/*}*/
 
-#denyAgeButton:hover {
-    background: #b71c1c;
-}
+/*#denyAgeButton:hover {*/
+/*    background: #b71c1c;*/
+/*}*/
 
 /* Apply styles ONLY to login and register pages */
 body.auth-page .auth-form {
@@ -455,4 +455,80 @@ h2 {
 
 .home-link:hover {
     background-color: #2b5e8a;
+}
+
+/* ===== Custom Bootstrap Modal Styling ===== */
+
+/* Style the modal title (Age Verification text) */
+.modal-title {
+    font-size: 1.8rem; /* Adjust text size */
+    font-weight: bold; /* Make it bold */
+    text-transform: uppercase; /* Uppercase text */
+    color: #f8f9fa; /* Light gray/white color */
+    text-align: center; /* Center text */
+    width: 100%; /* Ensures full width for proper centering */
+}
+
+/* Center the modal text and adjust padding */
+.modal-content {
+    background: #222;  /* Dark background */
+    color: white;      /* White text */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust the modal title (header) */
+.modal-header {
+    background: #111; /* Darker background */
+    border-bottom: 2px solid #444; /* Subtle border */
+    color: white;
+    text-align: center;
+}
+
+/* Make the modal body text larger */
+.modal-body p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Style the modal footer */
+.modal-footer {
+    background: #111;
+    border-top: 2px solid #444;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style the confirmation button */
+#confirmAgeButton {
+    background: #28a745;  /* Bootstrap success green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+#confirmAgeButton:hover {
+    background: #218838; /* Darker green */
+}
+
+/* Style the denial button */
+#denyAgeButton {
+    background: #dc3545; /* Bootstrap danger red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+#denyAgeButton:hover {
+    background: #c82333; /* Darker red */
+}
+
+/* Adjust the backdrop (background overlay) */
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.85); /* Darker overlay */
 }

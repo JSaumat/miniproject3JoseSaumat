@@ -1,11 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Ensure the script runs ONLY on the home page (`/`)
+document.addEventListener('DOMContentLoaded', function () {
     if (window.location.pathname === '/') {
-        const modal = document.getElementById('ageModal');
-        const confirmBtn = document.getElementById('confirmAgeButton');
-        const denyBtn = document.getElementById('denyAgeButton');
+        const modalElement = document.getElementById('ageModal');
+        const modal = new bootstrap.Modal(modalElement, { keyboard: false });
 
-        // Function to set a cookie
         function setCookie(name, value, days) {
             let expires = "";
             if (days) {
@@ -16,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.cookie = name + "=" + value + expires + "; path=/";
         }
 
-        // Function to get a cookie value
         function getCookie(name) {
             const cookies = document.cookie.split('; ');
             for (let i = 0; i < cookies.length; i++) {
@@ -28,25 +24,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return null;
         }
 
-        // If the user has already confirmed their age, DO NOT show the modal
-        if (getCookie('ageVerified')) {
-            return; // Exit the function, do nothing
+        if (!getCookie('ageVerified')) {
+            modal.show(); // Show modal if cookie isn't set
         }
 
-        // If no cookie exists, show the modal on the home page
-        if (modal) {
-            modal.style.display = 'flex';
-        }
-
-        // When the user confirms they are 18+, set the cookie and hide the modal
-        confirmBtn.addEventListener('click', function() {
-            setCookie('ageVerified', 'true', 365 * 20); // Cookie lasts ~20 years
-            modal.style.display = 'none'; // Hide the modal
+        document.getElementById('confirmAgeButton').addEventListener('click', function () {
+            setCookie('ageVerified', 'true', 365 * 20); // Store cookie for 20 years
+            modal.hide();
         });
 
-        // If the user clicks "I am not 18", redirect to Google
-        denyBtn.addEventListener('click', function() {
-            window.location.href = "https://www.google.com"; // Redirect to Google
+        document.getElementById('denyAgeButton').addEventListener('click', function () {
+            window.location.href = "https://www.google.com"; // Redirect if under 18
         });
     }
 });
