@@ -51,9 +51,13 @@ def register():
             except db.IntegrityError:
                 error = f"User {username} is already registered."
 
-        if error is not None:
-            flash(error, 'error')  # ✅ Ensure the error message is shown
-            print(f"Flashed error message: {error}")  # Debugging
+        # if error is not None:
+        #     flash(error, 'error')  # ✅ Ensure the error message is shown
+        #     print(f"Flashed error message: {error}")  # Debugging
+
+        else:
+            flash(error, 'error')  # ✅ Ensure this happens when there’s a problem
+
     return render_template('auth/register.html')
 
 
