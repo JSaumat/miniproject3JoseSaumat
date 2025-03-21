@@ -3,26 +3,43 @@
 {% block title %}Sam's Movie Blog : Home{% endblock %}  <!-- Page-Specific Title -->
 
 {% block content %}
+
+  <!-- Welcome message when user is on the home page -->
   <p>Welcome! Check out the trailers of my top 10 favorite movies! If you have seen these movies, or plan to watch them soon let me know!
     Click above on the navigation bar to view blog posts. You can also register and then log in to interact with the community.</p>
+
   <!--<p><a href="{{ url_for('blog.index') }}">View Blog Posts</a></p>
   <p><a href="{{ url_for('auth.login') }}">Log in to Post</a></p>-->
 
   <div class="center-title">
+
     <h2>Sam's Top 10 Favorite Movies</h2>
+
   </div>
 
+  <!-- The grid of movie posters shown -->
   <div class="movie-grid">
+
   {% for title, link, image in movies %}
+
     <a href="{{ link }}" target="_blank" class="movie-tile">
+
       {% if image %}
+
         <img src="{{ image }}" alt="{{ title }}">
+
       {% else %}
+
         <div class="no-image">No Image Available</div>
+
       {% endif %}
+
       <p>{{ title }}</p>
+
     </a>
+
   {% endfor %}
+
 </div>
 
 {% endblock %}

@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Logged Out - Sam's Movie Blog{% endblock %}
+{% block title %}Sam's Movie Blog : Log Out{% endblock %}
 
 {% block content %}
+
+  <!-- Displays log out message to user -->
   <div class="logged-out-container">
+
     <h1>You have been logged out.</h1>
+
     <p>Thank you for visiting Sam's Movie Blog. Click below to return to the home page.</p>
+
     <a href="{{ url_for('home.home') }}" class="home-link">Return to Home</a>
+
   </div>
+
 {% endblock %}

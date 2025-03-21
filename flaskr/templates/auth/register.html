@@ -3,39 +3,62 @@
 {% block title %}Sam's Movie Blog : Register{% endblock %}  <!-- Page-Specific Title -->
 
 {% with messages = get_flashed_messages(with_categories=true) %}
+
     {% if messages %}
+
         {% for category, message in messages %}
+
             <div class="flash {{ category }}">{{ message }}</div>
+
         {% endfor %}
+
     {% endif %}
+
 {% endwith %}
 
 {% block content %}
+
   <h2>Register</h2>  <!-- Added H2 Header -->
 
+    <!-- Displays flash messages to user -->
     {% with messages = get_flashed_messages(with_categories=true) %}
+
       {% if messages %}
+
         <div class="flash-container">
+
           {% for category, message in messages %}
+
             <div class="flash {{ category }}">{{ message }}</div>
+
           {% endfor %}
+
         </div>
+
       {% endif %}
+
     {% endwith %}
 
+  <!-- Registration form -->
   <form method="post" class="auth-form">
+
     <label for="firstname">First Name</label>
+
     <input type="text" name="firstname" id="firstname" required>
 
     <label for="lastname">Last Name</label>
+
     <input type="text" name="lastname" id="lastname" required>
 
     <label for="username">Username</label>
+
     <input type="text" name="username" id="username" required>
 
     <label for="password">Password</label>
+
     <input type="password" name="password" id="password" required>
 
     <button type="submit">Register</button>
+
   </form>
 {% endblock %}
